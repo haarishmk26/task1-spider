@@ -78,7 +78,7 @@
         //RXis width  RYis height Xis xcoord of rectangle Ysimilarily
         for(var j=0;j<coordinate.length;j++)
         {ctx.fillRect(coordinate.X[j], coordinate.Y[j], coordinate.RX[j],coordinate.RY[j]);
-          coordinate.Y+=speed;
+          coordinate.Y[j]+=speed;
          
          if(coordinate.RY[j]>300)
          {coordinate.push({
