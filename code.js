@@ -80,7 +80,7 @@
         {ctx.fillRect(coordinate.X[j], coordinate.Y[j], coordinate.RX[j],coordinate.RY[j]);
           coordinate.Y[j]+=speed;
          
-         if(coordinate.RY[j]>300)
+         if(coordinate.Y[j]>300)
          {coordinate.push({
            X:Math.floor((Math.random() * cvs.width)),
            Y:0,
