@@ -1,4 +1,4 @@
-    var cvs = document.getElementById("canvas");
+  var cvs = document.getElementById("canvas");
     var ctx = cvs.getContext('2d');
     var bg = new Image();
     var speed = 1.5,i=1,e; 
@@ -142,8 +142,13 @@
          if(((ball[0].x>obstacle[j].X)&&(ball[0].x<obstacle[j].RX+obstacle[j].X))&&((ball[0].y>obstacle[j].Y)&&(ball[0].y<obstacle[j].RY+obstacle[j].Y)))         
          {//location.reload();
           //document.write("GAME OVER");
+          ctx.save();
           gameover=0;
-          window.alert("GAME OVER");
+          ctx.fillStyle="white";
+          ctx.font = "80px Arial";
+          ctx.fillText("GAME OVER",50,300);
+          ctx.restore();
+         // window.alert("GAME OVER");
           break;
           //document.location.reload();
           //clearInterval(interval);
@@ -152,8 +157,13 @@
          if(((ball[1].x>obstacle[j].X)&&(ball[1].x<obstacle[j].RX+obstacle[j].X))&&((ball[1].y>obstacle[j].Y)&&(ball[1].y<obstacle[j].RY+obstacle[j].Y)))
          {//location.reload();
           //document.write("GAME OVER");
+          ctx.save();
           gameover=0;
-          window.alert("GAME OVER");
+          ctx.fillStyle="white";
+          ctx.font = "80px Arial";
+          ctx.fillText("GAME OVER",50,300);
+          ctx.restore();
+          //window.alert("GAME OVER");
           break;
           //document.location.reload();
           //clearInterval(interval);
