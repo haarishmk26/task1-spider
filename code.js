@@ -1,4 +1,4 @@
-  var cvs = document.getElementById("canvas");
+ var cvs = document.getElementById("canvas");
     var ctx = cvs.getContext('2d');
     var bg = new Image();
     var speed = 1.5,i=1,e; 
@@ -70,6 +70,7 @@
     function decide(e)
     {if(e.key=='d')
        {//function clockwise
+        //angle-=10;
         angle-=(Math.PI/10);
         ctx.beginPath();
         ball[0].x=300+(100*Math.cos(angle));
@@ -82,6 +83,7 @@
       
       if(e.key=='a') 
       {//function anticlockwise
+        //angle+=10;
         angle+=(Math.PI/10);
        ctx.beginPath();
         ball[0].x=300+(100*Math.cos(angle));
@@ -177,28 +179,9 @@
         ctx.fillText("Score"+score,10,30);
         ctx.font = "20px Arial";
         ctx.closePath();
+        setTimeout(duetgame,10);
         //var interval=setInterval(duetgame,400);
-        requestAnimationFrame(duetgame);
+        //requestAnimationFrame(duetgame);
       }
-
-    }
-         
-
-
-         } 
-         if(((circle[0].x>obstacle[j].X)&&(circle[0].x<obstacle[j].RX+obstacle[j].X))&&((circle[0].y>obstacle[j].Y)&&(circle[0].y<obstacle[j].RY+obstacle[j].Y)))         
-         location.reload();
-         if(((circle[1].x>obstacle[j].X)&&(circle[1].x<obstacle[j].RX+obstacle[j].X))&&((circle[1].y>obstacle[j].Y)&&(circle[1].y<obstacle[j].RY+obstacle[j].Y)))
-         location.reload();
-        }
-        i++;score++;
-        
-
-        ctx.fillStyle="white";
-        ctx.fillText("Score"+score,10,30);
-        ctx.font = "20px Arial";
-        ctx.closePath();
-        requestAnimationFrame(duetgame);
-      
 
     }
