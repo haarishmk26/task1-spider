@@ -1,12 +1,21 @@
-  var cvs = document.getElementById("canvas");
+ var cvs = document.getElementById("canvas");
     var ctx = cvs.getContext('2d');
     var bg = new Image();
     var speed = 1.5,i=1,e; 
     var gameover=1; 
     var length=0;var pausekey=0;
     var gamePaused= false;
-    var key=[];
     var game;
+    var p=0;
+    var keys;
+    document.addEventListener("keypress", movedown, false);
+    
+    function movedown(e) {
+      keys=e.key;
+  }
+  
+
+
     
     //press spacebar to pause
     
@@ -37,17 +46,23 @@
     ball[0]=new circle(400,400,15);//boy
     ball[1]=new circle(200,400,15);//girl
     //red ball is girl and blue is boy 0=boy 1=girl
+//class player{
+//constructor(myname,myscore)
+//{this.name=myname;
+ // this.score=myscore;
+  //this.chance=mychance;
 
+//}
+
+
+
+
+
+//}
+//let gamers=[2];
+//gamers[p]=new player(Monkey,0,1);
+//gamers[p]=new player(donkey,0,1);
     
-        //function pauseGame() 
-        //{pausekey++;
-         // for(l=0;pausekey%2!=0;l++)
-          //{
-          
-         // }
-        //}
-
-        //girlx=200,girly=400,boyx=400,boyy=400
    
     
     
@@ -59,7 +74,7 @@
     //setInterval(duetgame,30);
     
     
-    document.addEventListener('keypress',decide);
+   // document.addEventListener('keypress',decide);
     function circledraw(x,y,r,gendr)
     {
      ctx.beginPath();
@@ -69,13 +84,18 @@
      ctx.fill();
     }
     function reload()
-    { 
+    { //if(!player2.chance)
       location.reload();
+      //else
+      //clearRect
     }
-    function decide(e)
-    {if(e.key=='d')
+    setInterval(decide,10);
+    function decide()  //decide(e)
+    { 
+       if(keys=='d')       //if(e.key=='d')
        {//function clockwise
-        //angle-=10;
+        //angle-=1;
+        
         angle-=(Math.PI/10);
         ctx.beginPath();
         ball[0].x=300+(100*Math.cos(angle));
@@ -84,11 +104,13 @@
         ball[1].y=400+(100*Math.sin(angle));
         
         ctx.closePath();
+        
+       keys=null;
        }
       
-      if(e.key=='a') 
+        if(keys=='a')   //if(e.key=='a') 
       {//function anticlockwise
-        //angle+=10;
+        //angle+=1;
         angle+=(Math.PI/10);
        ctx.beginPath();
         ball[0].x=300+(100*Math.cos(angle));
@@ -97,6 +119,8 @@
         ball[1].y=400+(100*Math.sin(angle));
       
        ctx.closePath();
+       
+       keys=null;
       }
        
 
