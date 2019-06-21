@@ -1,10 +1,12 @@
- var cvs = document.getElementById("canvas");
+  var cvs = document.getElementById("canvas");
     var ctx = cvs.getContext('2d');
     var bg = new Image();
     var speed = 1.5,i=1,e; 
     var gameover=1; 
     var length=0;var pausekey=0;
-    var gamePaused="false";
+    var gamePaused= false;
+    var key=[];
+    var game;
     
     //press spacebar to pause
     
@@ -32,8 +34,8 @@
       }
     }
     let ball=[2];  
-    ball[0]=new circle(400,400,25);//boy
-    ball[1]=new circle(200,400,25);//girl
+    ball[0]=new circle(400,400,15);//boy
+    ball[1]=new circle(200,400,15);//girl
     //red ball is girl and blue is boy 0=boy 1=girl
 
     
@@ -52,8 +54,11 @@
     var score=0,angle=0;
     var time = new Date;
     bg.src = 'https://images2.alphacoders.com/622/thumb-1920-622005.jpg';
-    //newrectangle();
+    
     duetgame();
+    //setInterval(duetgame,30);
+    
+    
     document.addEventListener('keypress',decide);
     function circledraw(x,y,r,gendr)
     {
@@ -64,7 +69,7 @@
      ctx.fill();
     }
     function reload()
-    {
+    { 
       location.reload();
     }
     function decide(e)
@@ -93,24 +98,35 @@
       
        ctx.closePath();
       }
-       //if(e.key==' ')
-      //{pauseGame();
-      //}
-      //if(e.key=='p')
-      //{pausekey++;
-      // duetgame();}
+       
 
       
       
       
     }
+function gamepause()
+{ if (!gamePaused) 
+   {
+    //game=clearTimeout(duetgame);
+    gamePaused = true;
+   } 
+ else if (gamePaused) 
+   { 
+    
+    gamePaused = false;
+    requestAnimationFrame(duetgame);
+   }
+  
+}
 
         
   
     
     function duetgame()
-    {   if(gameover)
-      { ctx.drawImage(bg,0,0,600,600);
+    {  
+       if(gameover)
+       if(!gamePaused)
+      {{ ctx.drawImage(bg,0,0,600,600);
         ctx.beginPath();
         ctx.arc(300,400,100,0,(Math.PI*2),true);
         ctx.strokeStyle="white";
@@ -150,25 +166,23 @@
           ctx.font = "80px Arial";
           ctx.fillText("GAME OVER",50,300);
           ctx.restore();
-         // window.alert("GAME OVER");
+         
           break;
           //document.location.reload();
           //clearInterval(interval);
          }
 
          if(((ball[1].x>obstacle[j].X)&&(ball[1].x<obstacle[j].RX+obstacle[j].X))&&((ball[1].y>obstacle[j].Y)&&(ball[1].y<obstacle[j].RY+obstacle[j].Y)))
-         {//location.reload();
-          //document.write("GAME OVER");
+         {
           ctx.save();
           gameover=0;
           ctx.fillStyle="white";
           ctx.font = "80px Arial";
           ctx.fillText("GAME OVER",50,300);
           ctx.restore();
-          //window.alert("GAME OVER");
+          
           break;
-          //document.location.reload();
-          //clearInterval(interval);
+          
          }
 
         }
@@ -183,5 +197,6 @@
         //var interval=setInterval(duetgame,400);
         //requestAnimationFrame(duetgame);
       }
-
+    }
+     
     }
