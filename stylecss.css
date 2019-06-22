@@ -1,4 +1,3 @@
-
 .button1 {
   position: absolute;
   left: 620px;
@@ -10,4 +9,20 @@
   left:700px;
   top: 20px;
   
+}
+.button3 {
+    position: absolute;
+  left:780px;
+  top: 20px;
+
+}
+table {
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid #aaa;
+    padding: 5px;
+    text-align: left;
 }
